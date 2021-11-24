@@ -4,10 +4,17 @@ import Home from '../views/Home.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    name: 'login',
+    component: () => import('../views/login/index.vue')
+  }, {
+    path: '/demo',
+    name: 'Demo',
+    component: () => import('../views/demo/index.vue')
+  }, {
+    path: '/home',
     name: 'Home',
     component: Home
-  },
-  {
+  }, {
     path: '/about',
     name: 'About',
     // route level code-splitting
