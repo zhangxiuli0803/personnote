@@ -46,6 +46,7 @@
   import { ElButton, ElInput, ElNotification } from 'element-plus';
   import { h, ref } from 'vue-demi';
   import { LocalStorage } from '@/utils/storage';
+  import { reg } from '@/utils/regexp';
   import { useRouter } from 'vue-router';
 
   const router = useRouter();
@@ -74,8 +75,8 @@
         ElNotification({ message: h('span', { class: 'green' }, '登录成功') });
 
         // 存储账户、密码
-        storage.set('userName', name.value, 60);
-        storage.set('userPwd', encodePwd, 60);
+        storage.set('userName', name.value, 90);
+        storage.set('userPwd', encodePwd, 90);
 
         // 登录成功，跳转页面
         router.push('/home');
@@ -88,8 +89,6 @@
   };
 
   const register = () => {
-    const reg: any = /^(?![^a-zA-Z]+$)(?!\D+$).{8,15}$/; // 字母、数字组合; 至少包含一个字母和数字,长度控制在8-15
-
     if (rname.value == '' || rpwd.value == '' || rpwd1.value == '') {
       ElNotification({ message: h('span', { class: 'red' }, '用户名、密码不能为空，请输入') });
       RName.value?.focus();
@@ -123,8 +122,8 @@
   };
 
   // 判断是否有缓存的账号密码
-  const storageUserName: string = storage.get('userName');
-  const storageUserPwd: string = storage.get('userPwd');
+  const storageUserName = storage.get('userName');
+  const storageUserPwd = storage.get('userPwd');
   if (storageUserName && storageUserPwd) {
     name.value = storageUserName;
     pwd.value = Base64.decode(storageUserPwd);
