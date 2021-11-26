@@ -11,3 +11,23 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.green {
+  color: @green;
+}
+
+.red {
+  color: @red;
+}
+
+.scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+}

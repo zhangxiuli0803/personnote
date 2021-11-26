@@ -5,6 +5,6 @@
 <script setup  lang="ts">
 </script>
 
-<style>
+<style lang="less">
   @import './assets/less/common.less';
 </style>
